@@ -1,39 +1,44 @@
 import * as React from "react";
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { Routes, Route, Outlet, Link, NavLink } from "react-router-dom";
+
+import { LayoutGroup } from "framer-motion";
+
+import Home from './components/Home'
+import About from './components/About'
+import Products from './components/Products'
+import ProductDetail from './components/ProductDetail'
 
 export default function App() {
   return (
     <div>
-      <h1>Basic Example</h1>
-
-      <p>
-        This example demonstrates some of the core features of React Router
-        including nested <code>&lt;Route&gt;</code>s,{" "}
-        <code>&lt;Outlet&gt;</code>s, <code>&lt;Link&gt;</code>s, and using a
-        "*" route (aka "splat route") to render a "not found" page when someone
-        visits an unrecognized URL.
-      </p>
-
-      {/* Routes nest inside one another. Nested route paths build upon
+      <LayoutGroup>
+        {/* Routes nest inside one another. Nested route paths build upon
             parent route paths, and nested route elements render inside
             parent route elements. See the note about <Outlet> below. */}
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="dashboard" element={<Dashboard />} />
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route exact path="products" element={<Products />} />
+            <Route exact path="products/:productId" element={<ProductDetail />} />
+            <Route path="about" element={<About />} />
 
-          {/* Using path="*"" means "match anything", so this route
+            {/* Using path="*"" means "match anything", so this route
                 acts like a catch-all for URLs that we don't have explicit
                 routes for. */}
-          <Route path="*" element={<NoMatch />} />
-        </Route>
-      </Routes>
+            <Route path="*" element={<NoMatch />} />
+          </Route>
+        </Routes>
+      </LayoutGroup>
     </div>
   );
 }
 
 function Layout() {
+  let activeStyle = {
+    textDecoration: "underline",
+  };
+
+  let activeClassName = "underline";
   return (
     <div>
       {/* A "layout route" is a good place to put markup you want to
@@ -41,16 +46,24 @@ function Layout() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/" style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>Home</NavLink>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <NavLink to="/products" style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>Products</NavLink>
           </li>
           <li>
-            <Link to="/dashboard">Dashboard</Link>
+            <NavLink to="/about" style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>About</NavLink>
           </li>
           <li>
-            <Link to="/nothing-here">Nothing Here</Link>
+            <NavLink to="/nothing-here" style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>Nothing Here</NavLink>
           </li>
         </ul>
       </nav>
@@ -65,29 +78,29 @@ function Layout() {
   );
 }
 
-function Home() {
-  return (
-    <div>
-      <h2>Home</h2>
-    </div>
-  );
-}
+// function Home() {
+//   return (
+//     <div>
+//       <h2>Home</h2>
+//     </div>
+//   );
+// }
 
-function About() {
-  return (
-    <div>
-      <h2>About</h2>
-    </div>
-  );
-}
+// function About() {
+//   return (
+//     <div>
+//       <h2>About</h2>
+//     </div>
+//   );
+// }
 
-function Dashboard() {
-  return (
-    <div>
-      <h2>Dashboard</h2>
-    </div>
-  );
-}
+// function Dashboard() {
+//   return (
+//     <div>
+//       <h2>Dashboard</h2>
+//     </div>
+//   );
+// }
 
 function NoMatch() {
   return (
