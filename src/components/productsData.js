@@ -66,5 +66,21 @@ export default [
     description: "You'll get caught up in the crossfire!",
     src: "https://images.unsplash.com/photo-1501436513145-30f24e19fcc8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
     price: 35
-  }
+  },
+  {
+    id: "9",
+    slug: "dokuzuncu",
+    title: "DOKUZ board game",
+    description: "You'll get caught up in the crossfire!",
+    src: "https://plus.unsplash.com/premium_photo-1673862048437-966d5d415763?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
+    price: 36
+  },
+  {
+    id: "10",
+    slug: "onuncu",
+    title: "ON board game",
+    description: "You'll get caught up in the crossfire!",
+    src: "https://plus.unsplash.com/premium_photo-1673862048437-966d5d415763?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
+    price: 37
+  },
 ];

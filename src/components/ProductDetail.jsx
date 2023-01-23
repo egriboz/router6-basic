@@ -1,21 +1,35 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
 import productsData from "./productsData"
 import { motion } from "framer-motion";
+
+const goToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
 
 const ProductDetail = () => {
   const { productId } = useParams()
   console.log("productId: ", productId);
   const thisProduct = productsData.find(prod => prod.id === productId)
+  useEffect(() => {
+    console.log("ff,");
 
+    setTimeout(() => {
+      goToTop();
+      console.log("goToTop");
+    }, "100")
+  }, [productId]);
   return (
 
     <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.5fr] min-h-screen">
       <div className="p-10">
         <div className="sticky top-10">
           <div className="flex justify-between mb-8">
-            <Link to="/products">
-              BACK
+            <Link to="/">
+              - BACK
             </Link>
 
           </div>

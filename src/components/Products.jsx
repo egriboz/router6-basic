@@ -2,7 +2,7 @@ import React from "react";
 import productsData from "./productsData";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-
+import MultiplePlanes from "./MultiplePlanes";
 const Products = () => {
 
   const products = productsData.map(product => {
@@ -20,10 +20,11 @@ const Products = () => {
 
   return (
     <>
+      <MultiplePlanes productsData={productsData} />
       <h1>Products Page</h1>
-      <div className="grid grid-cols-4 gap-4">
+      {/* <div className="grid grid-cols-4 gap-4">
         {products}
-      </div>
+      </div> */}
     </>
   );
 };
