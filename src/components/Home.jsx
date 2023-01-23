@@ -7,33 +7,33 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Home = () => {
 
-  // gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
 
-  // const ref = useRef(null);
+  const ref = useRef(null);
 
-  // console.log("ref: ", ref);
+  console.log("ref: ", ref);
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   const element = ref.current;
-  //   ScrollTrigger.create({
-  //     trigger: "#ref",
-  //     start: 0,
-  //     end: "max",
-  //     onLeave: self => {
-  //       self.scroll(1);
-  //       ScrollTrigger.update();
-  //     },
-  //     onLeaveBack: self => {
-  //       self.scroll(ScrollTrigger.maxScroll(window) - 1);
-  //       ScrollTrigger.update();
-  //     }
+    const element = ref.current;
+    ScrollTrigger.create({
+      trigger: "#ref",
+      start: 0,
+      end: "max",
+      onLeave: self => {
+        self.scroll(1);
+        ScrollTrigger.update();
+      },
+      onLeaveBack: self => {
+        self.scroll(ScrollTrigger.maxScroll(window) - 1);
+        ScrollTrigger.update();
+      }
 
-  //   });
-  //   return () => {
-  //     ScrollTrigger.getAll().forEach(t => t.kill());
-  //   }
-  // }, [ref])
+    });
+    return () => {
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    }
+  }, [ref])
 
   const products = productsData.map(product => {
     return (
