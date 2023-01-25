@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Routes, Route, Outlet, Link, NavLink } from "react-router-dom";
-
+import { Routes, Route, useLocation, Outlet, Link, NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { LayoutGroup } from "framer-motion";
 
 import Home from './components/Home'
@@ -31,13 +31,16 @@ import ProductDetail from './components/ProductDetail'
 // requestAnimationFrame(raf)
 
 export default function App() {
+  const location = useLocation();
+  useEffect(() => window.scrollTo(0, 0), [location]);
+  console.log("location routers:", location);
   return (
     <div>
       <LayoutGroup>
         {/* Routes nest inside one another. Nested route paths build upon
             parent route paths, and nested route elements render inside
             parent route elements. See the note about <Outlet> below. */}
-        <Routes>
+        <Routes location={location} key={location.key}>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route exact path="products" element={<Products />} />
